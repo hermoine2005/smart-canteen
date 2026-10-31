@@ -1,0 +1,16 @@
+:root{--green:#1F4D3A;--saffron:#F2A33A;--chili:#C8402F;--bg:#F5F7F4;--ink:#18231E}
+body{font-family:'Bricolage Grotesque',system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+.btn-brand{background:var(--green);color:#fff;border:0}.btn-brand:hover{background:#163a2b;color:#fff}
+.btn-saffron{background:var(--saffron);color:var(--ink);border:0;font-weight:600}
+.topbar{background:var(--green)}.topbar .nav-link,.topbar .navbar-brand{color:#fff}.topbar .nav-link.active{color:var(--saffron)}
+.hero{background:var(--green);color:#fff;border-radius:1rem;padding:2rem}.hero h1{font-weight:800}
+.food-card img{height:150px;object-fit:cover;border-radius:.75rem .75rem 0 0}
+.food-card{border:0;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.heart{cursor:pointer;font-size:1.3rem;color:#bbb;background:none;border:0}.heart.on{color:var(--chili)}
+.sidebar{background:var(--ink);min-height:100vh;width:220px}.sidebar button{color:#cfd8d3;text-align:left;border:0;background:none;padding:.6rem 1rem;width:100%;border-radius:.5rem}
+.sidebar button.active{background:var(--green);color:#fff}
+.stat{border-left:5px solid var(--saffron);background:#fff;border-radius:.5rem;padding:1rem}
+.bar{background:var(--green);border-radius:4px 4px 0 0;min-width:28px}
+.status{padding:.2rem .6rem;border-radius:1rem;font-size:.8rem;background:#e7ece9}
+.status.ready{background:#d7f0dd}.status.rejected,.status.cancelled{background:#f6d9d5}.status.pending{background:#fdecc8}
+@media(max-width:768px){.admin-wrap{flex-direction:column}.sidebar{width:100%;min-height:auto;display:flex;overflow-x:auto}}
