@@ -1,9 +1,26 @@
-// Entry point (Practical 4: Node.js, Practical 5: Express)
 require('dotenv').config();
 const express = require('express'), cors = require('cors'), mongoose = require('mongoose');
 const { errorHandler } = require('./middleware/auth');
 const app = express();
-app.use(cors({ origin: process.env.CLIENT_URL || '*' }));
+
+// Allowed websites (frontend URLs)
+const extraOrigins = (process.env.CLIENT_URL || '')
+  .split(',')
+  .map((u) => u.trim().replace(/\/$/, ''))
+  .filter(Boolean);
+
+app.use(cors({
+  origin: (origin, callback) => {
+    // no origin = Postman / server-to-server, allow
+    if (!origin) return callback(null, true);
+    const ok =
+      origin.startsWith('http://localhost') ||
+      /^https:\/\/smart-canteen[a-z0-9-]*\.vercel\.app$/.test(origin) ||
+      extraOrigins.includes(origin);
+    callback(null, ok);
+  },
+}));
+
 app.use(express.json());
 app.get('/api/health', (req, res) => res.json({ ok: true }));
 app.use('/api/auth', require('./routes/auth'));
